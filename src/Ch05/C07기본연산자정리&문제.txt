@@ -66,7 +66,7 @@ System.out.println(z);
 ----------------------------
 int var1 = 5;
 int var2 = 2;
-double var3 = var1 / var2;
+double var3 = var1 / var2;	// <- 여기서는 인티저 형태이기 때문에... 잘될려면 /double var3 = 1.0*var1 / var2; 하면된다.
 int var4=(int)(var3 * var2);
 System.out.println(var4);
 ----------------------------
@@ -79,9 +79,9 @@ System.out.println(var4);
  int x = 10;
  int y = 5;
  System.out.println( (x>7) && (y<=5) );
- -> (			)
+ -> (			) // fales
  System.out.println( x%3 ==2) || (y%2 !=1) );
- -> (			)
+ -> (			) // fales
 ----------------------------
 
 5 대입 연산자와 산술연산자로 구성된 실행문을
@@ -89,8 +89,8 @@ System.out.println(var4);
 [예시]
 ----------------------------
  int value = 0;
- value = value + 10; ->(   );
- value = value - 10; ->(   );
+ value = value + 10; ->(   ); v += 10
+ value = value - 10; ->(   ); v -= 10
  value = value * 10; ->(   );
  value = value / 10; ->(   );
 ----------------------------
@@ -101,7 +101,7 @@ System.out.println(var4);
 [예시]
 ----------------------------
  int score = 85;
- String result = (!(score>90)) ? "가" : "나";
+ String result = (!(score>90)) ? "가" : "나"; // (!(score>90)) <- 이건 true 이다.
  System.out.println(result);
 ----------------------------
 

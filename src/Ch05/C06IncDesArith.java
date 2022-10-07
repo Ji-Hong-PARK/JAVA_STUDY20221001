@@ -14,5 +14,9 @@ public class C06IncDesArith {
 		b=0;
 		e=(a++>0)||((b*d/c)>0);
 		System.out.printf("a = %d, b = %d, c = %d, d = %d ,e = %b\n", a, b, c, d , e);
+		
+		//byte bb =5;
+		//bb = -bb;
+		
 	}
 }
