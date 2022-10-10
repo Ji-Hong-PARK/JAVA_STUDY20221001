@@ -8,6 +8,29 @@ public class C01IF {
 		
 		//단순 IF
 		
+		//IF문 돌아가는걸 보기위해선 중간에 프린트를 넣어서 순서를 보자.
+//		int age = 7;
+//		if(age >=8)
+//		{
+//			System.out.println("학교에 다닙니다");
+//		}
+//		System.out.println("첫 번째 IF 블럭 종료");
+//		if(age <8)
+//		{
+//			System.out.println("학교에 다니지 않습니다");
+//		}
+//		System.out.println("두 번째 IF 블럭 종료");
+//		System.out.println("프로그램을 종료합니다.");
+		
+		
+//		int age = 10;
+//		if(age >=8)
+//			System.out.println("학교에 다닙니다");
+//		else
+//			System.out.println("학교에 다니지 않습니다");
+//		System.out.println("두 번째 IF 블럭 종료");
+//		System.out.println("프로그램을 종료합니다.");
+		
 		/*
 		int age = 7;
 		if(age >=8)
@@ -20,6 +43,7 @@ public class C01IF {
 			System.out.println("학교에 다니지 않습니다");
 		}
 		*/
+		
 		
 		//IF - ELSE
 		/*
@@ -52,7 +76,7 @@ public class C01IF {
 		*/
 		
 		
-		//문제
+		//문제1
 		// 정수 한개값을 입력받아 3의 배수이면 해당 수를 출력하세요
 		
 		/*
@@ -66,7 +90,7 @@ public class C01IF {
 		}
 		*/
 		
-		//문제
+		//문제2
 		// 두수를 입력받아 두수 중에 큰수를 출력
 		
 		/*
@@ -87,7 +111,7 @@ public class C01IF {
 		sc.close();
 		*/
 		
-		//문제
+		//문제3
 		// 세개의 정수를 입력받아 해당수의 합과 평균을 출력
 		
 		/*
