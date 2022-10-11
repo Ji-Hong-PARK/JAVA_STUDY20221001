@@ -86,6 +86,7 @@ public class C02WhileWhile {
 		}
 		
 		// N 부터 9단까지 전체 출력
+		// 풀어보자
 		
 		
 
