@@ -12,10 +12,9 @@ class Buyer1
 		this.myMoney = myMoney;
 		this.appleCnt = appleCnt;
 	}
-	// 9번째로  생성자 코드 삽입
 	@Override
 	public String toString() {
-		return "Buyer [myMoney=" + myMoney + ", appleCnt=" + appleCnt + "]";
+		return "Buyer1 [myMoney=" + myMoney + ", appleCnt=" + appleCnt + "]";
 	}	
 	void pay1(Seller1 seller1, int money)//누구에게? 얼마? 무얼?	// 1번째로 적을건  pay 돈을 준다라고 적는다.
 	{		// ↑ 누구에게?, 돈을 이라는 매개변수를 적는다.
@@ -26,6 +25,8 @@ class Buyer1
 		int cnt = seller1.returnApple(money); // 3번째로  사과를 리턴 받는다.
 		// 내 사과개수에 누적.
 	}
+	
+	
 }
 
 class Seller1

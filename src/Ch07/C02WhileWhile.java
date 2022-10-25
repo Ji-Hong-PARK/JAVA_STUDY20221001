@@ -491,7 +491,7 @@ public class C02WhileWhile {
 //		{	
 //			//공백
 //			j=0;
-//			while(j<=(n-2)-i)
+//			while(j<=(n-1)-i)
 //			{
 //				System.out.print(" ");
 //				j++;	
