@@ -29,8 +29,10 @@ public class C03FileCopy {
 			out.write(buff);
 			out.flush();
 		}
+		in.close();
+		out.close();
 		
-
 	}
-
+	
+	
 }
