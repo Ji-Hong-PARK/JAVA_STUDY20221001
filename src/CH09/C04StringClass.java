@@ -47,6 +47,9 @@ public class C04StringClass {
 		System.out.println(tmp.indexOf("H"));
 		//lastIndexof("문자열")	: 문자열의 index번호 확인
 		System.out.println(tmp.lastIndexOf("H"));
+		
+		
+		
 		//contains("문자열") : 문자열 포함여부
 		System.out.println(tmp.contains("He"));
 		
