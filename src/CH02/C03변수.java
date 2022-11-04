@@ -29,10 +29,6 @@ public class C03변수 {
 //					    		double	= 8byte
 //					    		
 //					   = 논리형	boolean = true / false 두가지의 답을 말한다.
-		
-		
-		
-
 	}
 
 }
