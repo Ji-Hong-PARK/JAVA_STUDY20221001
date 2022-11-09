@@ -1,4 +1,4 @@
-package CH38Domain;
+package CH38.Domain;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -43,7 +43,7 @@ public class BookDAO {
 	//선택 조회하기
 
 	//등록하기
-	public boolean Insert(BookDTO dto) {
+	public int Insert(BookDTO dto) {
 		//pstmt
 		int result=0;
 		try {
@@ -56,11 +56,7 @@ public class BookDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		if(result>0) {
-			return true;
-		}
-		return false;
+		return result;
 	}
 	//수정하기
 	//삭제하기

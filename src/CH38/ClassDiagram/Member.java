@@ -1,4 +1,4 @@
-package CH38ClassDiagram;
+package CH38.ClassDiagram;
 
 public class Member {
 	private String memId;

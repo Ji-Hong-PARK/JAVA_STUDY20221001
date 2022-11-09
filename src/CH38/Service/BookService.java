@@ -1,7 +1,7 @@
-package CH38Service;
+package CH38.Service;
 
-import CH38Domain.BookDAO;
-import CH38Domain.BookDTO;
+import CH38.Domain.BookDAO;
+import CH38.Domain.BookDTO;
 
 public class BookService {
 
@@ -9,17 +9,30 @@ public class BookService {
 	
 	//인증서비스에 필요한 함수를써줘야한다.
 	
+	//싱글톤 패턴 코드 추가
+	private BookService instance;
+	public BookService getInstancs() {
+		if(instance == null)
+			instance = new BookService();
+		return instance;
+	}
+	
+	public BookService() {} //프라이빗 넣기! 인스턴스를 하면.
+	
 	
 	//도서 조회하기
 	//도서 등록하기
 	//(권한 확인 후 도서 등록하기)
 	public boolean RegisterBook(BookDTO dto, int permission) {
 		
-		//boolean isRegisterOK = true;
+		boolean isRegisterOK = true;
 		//권한 체크 (등록가능한지 여부 확인)
-		
 		if(permission >= 3) {
-			return dao.Insert(dto);
+			
+			int result = dao.Insert(dto);
+			if(result>0) {
+				return true;
+			}
 		}
 		
 		return false;
