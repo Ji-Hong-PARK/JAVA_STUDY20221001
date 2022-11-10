@@ -22,6 +22,7 @@ public class MemberDAO {
 
 	//싱글톤 패턴 코드 추가
 	private static MemberDAO instance;
+	
 	public static MemberDAO getInstance() {
 		if(instance==null);
 			instance = new MemberDAO();
@@ -59,7 +60,31 @@ public class MemberDAO {
 	}
 	//수정하기
 	//삭제하기
-	
+	//조회하기
+	public MemberDTO Select(String id) {
+		//pstmt
+		MemberDTO dto = null;
+		try {
+			pstmt = conn.prepareStatement("select * from tbl_member where memid =?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			if(rs != null) {
+				while(rs.next()) {
+					dto = new MemberDTO();
+					dto.setMemid(rs.getString("memid"));
+					dto.setPwd(rs.getString("pwd"));
+					dto.setRole(rs.getInt("role"));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {rs.close();}catch (Exception e) {e.printStackTrace();}
+			try {pstmt.close();}catch (Exception e) {e.printStackTrace();}
+		}
+		return dto;
+	}
 	
 	
 	

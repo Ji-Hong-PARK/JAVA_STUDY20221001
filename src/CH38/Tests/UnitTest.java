@@ -1,7 +1,11 @@
 package CH38.Tests;
 
+import CH38.Controller.AuthController;
 import CH38.Controller.FrontController;
-import CH38.Domain.BookDTO;
+import CH38.Domain.MemberDAO;
+import CH38.Domain.MemberDTO;
+import CH38.Service.AuthService;
+import CH38.Service.MemberService;
 
 public class UnitTest {
 
@@ -41,21 +45,43 @@ public class UnitTest {
 		
 		
 		
-		//FrontController
+//		//FrontController
+//		FrontController controller = new FrontController();
+//		//controller.ExSubController("/member", 2);
+//		//도서 등록(메뉴,SN(1),책(DTO))
+//		Object obj = controller.ExSubController("/book", 1, new BookDTO(5050, "왜이리어렵나?")); // 1,2,3,4,etc 등 받는다.
+//		if(obj != null) {
+//			System.out.println("[View] " + obj.toString());
+//		}else {
+//			System.out.println("[View] " + obj.toString());
+//		}
+//		//위에 컨트롤러를 뷰로 옮기자.
+		
+//		//중간 확인
+//		MemberDAO dao = MemberDAO.getInstance();
+//		MemberDTO dto = dao.Select("mem1");
+//		System.out.println("DTO : " + dto);
+		
+		//한번더 확인 관리자와 회원이되어있는지
+//		AuthService service = AuthService.getInstancs();
+//		Integer result = service.LoginCheck("mgr1", "211");
+//		if(result != null) {
+//			System.out.println("[View] 로그인 성공! ROLE : "+ result);
+//		}else {
+//			System.out.println("[View] 로그인 실패!..");
+//		}
+		
 		FrontController controller = new FrontController();
-		//controller.ExSubController("/member", 2);
-		//도서 등록(메뉴,SN(1),책(DTO))
-		Object obj = controller.ExSubController("/book", 1, new BookDTO(4040, "MVC2ㅜㅜ")); // 1,2,3,4,etc 등 받는다.
-		if(obj != null) {
-			System.out.println("[View] " + obj.toString());
+		
+		//서비스 요청, 요청번호, DTO
+		//Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mea", "1111"));
+		//Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mgr1", "1111"));
+		Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1", "1111"));
+		if(result == null) {
+			System.out.println("[View] 로그인 실패...");
 		}else {
-			System.out.println("[View] " + obj.toString());
+			System.out.println("[View] 로그인 성공! ROLE : " + result);
 		}
-		//위에 컨트롤러를 뷰로 옮기자.
-		
-		
-		
-		
 		
 	}
 

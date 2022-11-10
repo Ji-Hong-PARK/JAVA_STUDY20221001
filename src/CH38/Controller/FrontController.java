@@ -18,8 +18,10 @@ public class FrontController {
 	private void init() {
 		map.put("/Member", new MemberController());
 		map.put("/book", new BookController());
+		map.put("/auth", new AuthController());
 	}
 	
+	//뷰에서... 어떤 요청인지  어떤 컨트롤러인지, 메뉴번호를 전달받아서 하위컨트롤러가 서비스요청
 	//사용자로부터(엑터) 요청서비스명, SN(서비스번호)를 찾아서 요청처리 Controller를 실행.
 	public Object ExSubController(String menu, int SN, DTO dto) { //ExSubController = excuteSubController
 	
