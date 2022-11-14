@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import CH38.Controller.FrontController;
+import CH38.Domain.LendDTO;
 import CH38.Domain.MemberDTO;
 import CH38.Service.AuthService;
 import CH38.Service.LendService;
@@ -148,6 +149,12 @@ public class UnitTest {
 			Loginstate = true;
 		}
 		//대여하기
+		LendDTO ldto = new LendDTO();
+		ldto.setId(userid);
+		ldto.setLogin(Loginstate);
+		ldto.setPerm(perm);
+		ldto.setBookcode(1010);
+		
 		controller.ExSubController("/lend", 1, new LendDTO());
 		
 		
