@@ -2,52 +2,48 @@ package CH38.Domain;
 
 public class BookDTO extends DTO{
 	private int bookCode;
-	private String bookname;
+	private String bookName;
 	private boolean isLend;
 	
-	public BookDTO(int bookCode, String bookname, boolean isLend) {
+	public BookDTO(int bookCode, String bookName, boolean isLend) {
 		super();
 		this.bookCode = bookCode;
-		this.bookname = bookname;
+		this.bookName = bookName;
 		this.isLend = isLend;
 	}
-	public BookDTO(int bookCode, String bookname) {
+	public BookDTO(int bookCode, String bookName) {
 		super();
 		this.bookCode = bookCode;
-		this.bookname = bookname;
+		this.bookName = bookName;
 		this.isLend = true;
 	}
 	BookDTO(){}
-	
-	// 생성자(모든인자받기)
-	// 디폴트 생성자
-	// toString() 재정의
-	// Getter and Setter
-	
+	//생성자(모든인자받기)
+	//디폴트 생성자
+	//toString() 재정의
+	//Getter and Setter
 	public int getBookCode() {
 		return bookCode;
 	}
 	public void setBookCode(int bookCode) {
 		this.bookCode = bookCode;
 	}
-	public String getBookname() {
-		return bookname;
+	public String getBookName() {
+		return bookName;
 	}
-	public void setBookname(String bookname) {
-		this.bookname = bookname;
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
+	
 	public boolean isLend() {
 		return isLend;
 	}
 	public void setLend(boolean isLend) {
 		this.isLend = isLend;
 	}
-	
-	
 	@Override
 	public String toString() {
-		return "BookDTO [bookCode=" + bookCode + ", bookname=" + bookname + ", isLend=" + isLend + "]";
+		return "BookDTO [bookCode=" + bookCode + ", bookName=" + bookName + ", isLend=" + isLend + "]";
 	}
-
 	
 }

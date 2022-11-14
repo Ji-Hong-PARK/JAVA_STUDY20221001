@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 
 
-
-
 public class BookDAO {
 
 	// 연결관련 정보 저장용 변수
@@ -52,7 +50,7 @@ public class BookDAO {
 		try {
 			pstmt = conn.prepareStatement("insert into tbl_book values(?,?,1)");
 			pstmt.setInt(1, dto.getBookCode());
-			pstmt.setString(2,dto.getBookname());
+			pstmt.setString(2,dto.getBookName());
 			result = pstmt.executeUpdate();
 		
 			
@@ -65,39 +63,37 @@ public class BookDAO {
 	//삭제하기
 
 	public BookDTO Select(int bookcode) {
-		
 		BookDTO dto = null;
+		
 		try {
 			pstmt = conn.prepareStatement("select * from tbl_book where bookcode=?");
 			pstmt.setInt(1, bookcode);
-			rs = pstmt.executeQuery();
-			if(rs != null) {
+			rs=pstmt.executeQuery();
+			if(rs!=null) {
 				rs.next();
-				dto = new BookDTO();
+				dto=new BookDTO();
 				dto.setBookCode(rs.getInt("bookcode"));
-				dto.setBookname("bookname");
-				int islend = rs.getInt("isLend");
-				if(islend == 1)
+				dto.setBookName(rs.getString("bookname"));
+				int islend=rs.getInt("isLend");
+				if(islend==1)
 					dto.setLend(true);
 			}
-	
-		}catch (SQLException e) {
+			
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			try {rs.close();}catch (Exception e) {e.printStackTrace();}
-			try {pstmt.close();}catch (Exception e) {e.printStackTrace();}
+			try{rs.close();}catch(Exception e) {e.printStackTrace();}
+			try{pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
-	
 		return dto;
 	}
 	
-	// 업데이트
 	public int Update(BookDTO dto) {
 		//pstmt
 		int result=0;
 		try {
 			pstmt = conn.prepareStatement("update tbl_book set bookname=?,isLend=? where bookcode=?");
-			pstmt.setString(1, dto.getBookname());
+			pstmt.setString(1, dto.getBookName());
 			if(dto.isLend())	//true - 대여가능
 				pstmt.setInt(2, 1);	//1값을 넣음
 			else				//false - 대여불가
@@ -111,13 +107,12 @@ public class BookDAO {
 		}
 		return result;
 	}
-
+	
+	//완성하기!!
 	public ArrayList<MemberDTO> SelectAll() {
-		
-		
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
 	
 	
 }

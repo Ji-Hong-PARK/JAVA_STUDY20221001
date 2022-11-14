@@ -3,36 +3,37 @@ package CH38.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import CH38.Domain.DTO;
+import Ch38.Domain.DTO;
 
 public class FrontController {
 
-	// 요청 정보 - 하위컨트롤러 Mapping 저장필요
-	private Map<String, SubController> map = new HashMap(); // key , value 값 받기.
+	//요청정보-하위컨트롤러 Mapping 저장필요
+	private Map<String,SubController> map = new HashMap();
 	
-	//생성자실행시 init함수 호출
-	public FrontController() {
-		init();// init() 함수가 없어서 밑에다 만들어준다.
+	//생성자 실행시 init함수 호출
+	public FrontController(){
+		init();
 	}
-	//요청 서비스별 처리 Controller 를 저장 보관 하기위한 함수.
+	
+	//요청 서비스별 처리 Controller를 저장 보관 하기위한 함수
 	private void init() {
-		map.put("/Member", new MemberController());	//서비스 요청별로 하위 컨트롤로 연결된다,.
-		map.put("/book", new BookController());
+		map.put("/member", new MemberController());
+		map.put("/book",new BookController());
 		map.put("/auth", new AuthController());
 		map.put("/lend", new LendController());
 	}
 	
-	//뷰에서... 어떤 요청인지  어떤 컨트롤러인지, 메뉴번호를 전달받아서 하위컨트롤러가 서비스요청
-	//사용자로부터(엑터) 요청서비스명, SN(서비스번호)를 찾아서 요청처리 Controller를 실행.
-	public Object ExSubController(String menu, int SN, DTO dto) { //ExSubController = excuteSubController
-	
-		//서비스 선별
-		SubController sub =  map.get(menu);
-		//SN 전달 execute
-		Object obj = sub.excute(SN, dto); //1,2,3,4,ㄷㅅㅊ...
+	//사용자로부터 요청서비스명,서비스번호(SN)를 받아 요청처리 Controller를 실행
+	public Object ExSubController(String menu,int SN,DTO dto) {
 		
+		//서비스 선별
+		SubController sub =  map.get(menu);	
+		//SN 전달 execute
+		Object obj =  sub.excute(SN,dto);//1,2,3,4,etc..
 		
 		return obj;
 	}
+
+	
 	
 }
