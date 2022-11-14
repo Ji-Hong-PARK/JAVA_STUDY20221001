@@ -1,4 +1,4 @@
-package Ch37ClassDiagram;
+package CH37ClassDiagram;
 
 public class Database {
 	

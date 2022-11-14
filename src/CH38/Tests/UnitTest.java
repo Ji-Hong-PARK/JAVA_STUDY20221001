@@ -2,10 +2,12 @@ package CH38.Tests;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import CH38.Controller.FrontController;
+import CH38.Domain.BookDTO;
 import CH38.Domain.LendDTO;
 import CH38.Domain.MemberDTO;
 import CH38.Service.AuthService;
@@ -138,26 +140,49 @@ public class UnitTest {
 		//LendController Tests
 		
 		
-		boolean Loginstate = false;
-		String userid = null;
-		Integer perm = 0; // 0 비회원  1 회원 2 사서(관리자)
+		boolean Loginstate=false;
+		String userid=null;
+		Integer perm = 0; //0 비회원 , 1 회원 2 관리자(사서)
 		
-		FrontController controller = new FrontController();
-		perm = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1","1111"));
-		if(perm > 0) {
-			userid = "mem1";
-			Loginstate = true;
+		FrontController controller=new FrontController();
+		//1 로그인
+		perm=(Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1","1111"));
+		if(perm>0) {
+			userid="mem1";
+			Loginstate=true;
 		}
 		//대여하기
 		LendDTO ldto = new LendDTO();
-		ldto.setId(userid);
+		ldto.setMemid(userid);
 		ldto.setLogin(Loginstate);
 		ldto.setPerm(perm);
-		ldto.setBookcode(1010);
+		ldto.setBookcode(3030);
+
 		
-		controller.ExSubController("/lend", 1, new LendDTO());
+		String msg=(String)controller.ExSubController("/lend", 1,ldto);
+		System.out.println("[VIEW] " + msg);
 		
 		
+		// 로그인 이후 전체 도서 정보를 Console 화면에 출력합니다
+		
+		
+//		boolean Loginstate = false;
+//		String userid = null;
+//		Integer perm = 0; // 0 비회원  1 회원 2 사서(관리자)
+//		
+//		FrontController controller = new FrontController();
+//		//1 로그인
+//		perm = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1","1111"));
+//		if(perm > 0) {
+//			userid = "mem1";
+//			Loginstate = true;
+//		}
+//		//2 전체 도서조회하기
+//		ArrayList<BookDTO> list = (ArrayList<BookDTO>) controller.ExSubController("/book" , 5, null);
+//		for(BookDTO dto : list) {
+//			System.out.println(dto.toString());
+//		}
+//		
 		
 		
 		
