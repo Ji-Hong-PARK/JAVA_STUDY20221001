@@ -84,13 +84,18 @@ import java.sql.SQLException;
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+				result = 0;
 				try {
 					conn.rollback();
 				} catch (SQLException e1) {
 					
 					e1.printStackTrace();
 				}
+			}finally {
+				try {pstmt.close();}catch (Exception e) {e.printStackTrace();}
 			}
+			
+			
 			return result;
 		}
 		// 반납처리

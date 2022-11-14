@@ -19,6 +19,7 @@ public class FrontController {
 		map.put("/Member", new MemberController());
 		map.put("/book", new BookController());
 		map.put("/auth", new AuthController());
+		map.put("/lend", new LendController());
 	}
 	
 	//뷰에서... 어떤 요청인지  어떤 컨트롤러인지, 메뉴번호를 전달받아서 하위컨트롤러가 서비스요청
