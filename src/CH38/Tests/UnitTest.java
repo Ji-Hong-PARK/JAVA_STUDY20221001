@@ -1,11 +1,12 @@
 package CH38.Tests;
 
-import CH38.Controller.AuthController;
-import CH38.Controller.FrontController;
-import CH38.Domain.MemberDAO;
-import CH38.Domain.MemberDTO;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import CH38.Service.AuthService;
-import CH38.Service.MemberService;
+import CH38.Service.LendService;
 
 public class UnitTest {
 
@@ -71,17 +72,63 @@ public class UnitTest {
 //			System.out.println("[View] 로그인 실패!..");
 //		}
 		
-		FrontController controller = new FrontController();
+//		FrontController controller = new FrontController();
+//		
+//		//서비스 요청, 요청번호, DTO
+//		//Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mea", "1111"));
+//		//Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mgr1", "1111"));
+//		Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1", "1111"));
+//		if(result == null) {
+//			System.out.println("[View] 로그인 실패...");
+//		}else {
+//			System.out.println("[View] 로그인 성공! ROLE : " + result);
+//		}
+	
 		
-		//서비스 요청, 요청번호, DTO
-		//Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mea", "1111"));
-		//Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mgr1", "1111"));
-		Integer result = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1", "1111"));
-		if(result == null) {
-			System.out.println("[View] 로그인 실패...");
+		//LendDAO 책넣는법
+//		LendDAO dao = LendDAO.getInstance();
+//		dao.Insert(new LendDTO(0,1010,"aaa","2022-11-10","2022-11-17"));
+		 
+		
+//		//날짜정보 확인
+//		//DataFormat 지정객체
+//		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+//		//날짜정보 객체
+//		Calendar cal = Calendar.getInstance();
+//		//현재 날짜정보를 문자열로 저장 start
+//		String start = fmt.format(cal.getTime()).toString();
+//		//System.out.println("start : " + start);
+//		//7일 이후 날짜로 등록
+//		cal.add(Calendar.DATE,8);
+//		String end = fmt.format(cal.getTime()).toString();
+//		//System.out.println("end : " + end);
+		
+		
+		
+		//확인작업
+		boolean Loginstate = false;
+		String userid = null;
+		Integer perm = 0; // 0 비회원  1 회원 2 사서(관리자)
+		//인증서비스
+		AuthService authservice = AuthService.getInstancs();
+		
+		perm = authservice.LoginCheck("mem1", "1111");
+		if(perm != null) {
+			Loginstate = true;
+			userid = "mem1";
 		}else {
-			System.out.println("[View] 로그인 성공! ROLE : " + result);
+			perm = 0;
 		}
+		
+		//대여서비스
+		LendService lendservice = LendService.getInstancs();
+		boolean result =  lendservice.Lendbook(Loginstate, perm, userid, 4040);
+		if(result) {
+			System.out.println("[View] 대여성공!");
+		}else {
+			System.out.println("[View] 대여실패..");
+		}
+		
 		
 	}
 

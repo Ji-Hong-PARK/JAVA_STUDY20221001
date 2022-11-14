@@ -40,7 +40,7 @@ public class AuthService {
 		{
 			return dto.getRole();
 		}
-		//Role 반환( 0 or 1 or Null 값으로 반환된다)
+		//Role 반환( 1 or 2 or Null 값으로 반환된다)  // 권한값이다.
 		return null;
 	}
 	
