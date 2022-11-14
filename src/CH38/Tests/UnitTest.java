@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import CH38.Controller.FrontController;
+import CH38.Domain.BookDAO;
 import CH38.Domain.BookDTO;
 import CH38.Domain.LendDTO;
 import CH38.Domain.MemberDTO;
@@ -140,27 +141,27 @@ public class UnitTest {
 		//LendController Tests
 		
 		
-		boolean Loginstate=false;
-		String userid=null;
-		Integer perm = 0; //0 비회원 , 1 회원 2 관리자(사서)
-		
-		FrontController controller=new FrontController();
-		//1 로그인
-		perm=(Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1","1111"));
-		if(perm>0) {
-			userid="mem1";
-			Loginstate=true;
-		}
-		//대여하기
-		LendDTO ldto = new LendDTO();
-		ldto.setMemid(userid);
-		ldto.setLogin(Loginstate);
-		ldto.setPerm(perm);
-		ldto.setBookcode(3030);
-
-		
-		String msg=(String)controller.ExSubController("/lend", 1,ldto);
-		System.out.println("[VIEW] " + msg);
+//		boolean Loginstate=false;
+//		String userid=null;
+//		Integer perm = 0; //0 비회원 , 1 회원 2 관리자(사서)
+//		
+//		FrontController controller=new FrontController();
+//		//1 로그인
+//		perm=(Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1","1111"));
+//		if(perm>0) {
+//			userid="mem1";
+//			Loginstate=true;
+//		}
+//		//대여하기
+//		LendDTO ldto = new LendDTO();
+//		ldto.setMemId(userid);
+//		ldto.setLogin(Loginstate);
+//		ldto.setPerm(perm);
+//		ldto.setBookcode(1010);
+//
+//		
+//		String msg=(String)controller.ExSubController("/lend", 1,ldto);
+//		System.out.println("[VIEW] " + msg);
 		
 		
 		// 로그인 이후 전체 도서 정보를 Console 화면에 출력합니다
@@ -183,7 +184,13 @@ public class UnitTest {
 //			System.out.println(dto.toString());
 //		}
 //		
+		//책을 10개정도 넣어보자.
+		BookDAO dao = BookDAO.getInstance();
 		
+		for(int i = 0; i < 10; i++) {
+			dao.Insert(new BookDTO(3000+i, "Book" + i));
+			//3000번대 북코드를 10번의 반복으로 넣는다.
+		}
 		
 		
 		

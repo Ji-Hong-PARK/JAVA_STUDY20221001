@@ -1,7 +1,7 @@
 package CH38.Service;
 
-import Ch38.Domain.MemberDAO;
-import Ch38.Domain.MemberDTO;
+import CH38.Domain.MemberDAO;
+import CH38.Domain.MemberDTO;
 
 public class MemberService {
 

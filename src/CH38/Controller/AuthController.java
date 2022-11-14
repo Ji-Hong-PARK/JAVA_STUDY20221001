@@ -1,8 +1,8 @@
 package CH38.Controller;
 
-import Ch38.Domain.DTO;
-import Ch38.Domain.MemberDTO;
-import Ch38.Service.AuthService;
+import CH38.Domain.DTO;
+import CH38.Domain.MemberDTO;
+import CH38.Service.AuthService;
 
 public class AuthController implements SubController {
 	private AuthService service = AuthService.getInstance();

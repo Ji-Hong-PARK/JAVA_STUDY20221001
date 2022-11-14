@@ -2,9 +2,9 @@ package CH38.Service;
 
 import java.util.ArrayList;
 
-import Ch38.Domain.BookDAO;
-import Ch38.Domain.BookDTO;
-import Ch38.Domain.MemberDTO;
+import CH38.Domain.BookDAO;
+import CH38.Domain.BookDTO;
+import CH38.Domain.MemberDTO;
 
 public class BookService {
 	
@@ -41,8 +41,8 @@ public class BookService {
 	}
 	
 	
-	public ArrayList<MemberDTO> ShowAllBook() {
-		ArrayList<MemberDTO> list=dao.SelectAll();
+	public ArrayList<BookDTO> ShowAllBook() {
+		ArrayList<BookDTO> list=dao.SelectAll();
 		
 		return list;
 	}

@@ -108,11 +108,43 @@ public class BookDAO {
 		return result;
 	}
 	
-	//완성하기!!
-	public ArrayList<MemberDTO> SelectAll() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	//전체 조회완성하기!!
+	public ArrayList<BookDTO> SelectAll() {
+		//pstmt
+		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+		BookDTO dto; //참조변수를 만든다.
+		
+		try {
+			pstmt = conn.prepareStatement("select * from tbl_book");
+			rs = pstmt.executeQuery();
+			if(rs != null) {
+				while(rs.next()); //한행씩 내려간다.
+				dto = new BookDTO();
+				dto.setBookCode(rs.getInt("bookcode"));
+				dto.setBookName(rs.getString("bookname"));
+				if(rs.getInt("islend") == 1)
+					dto.setLend(true);
+				else
+					dto.setLend(false);
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try{rs.close();}catch(Exception e) {e.printStackTrace();}
+			try{pstmt.close();}catch(Exception e) {e.printStackTrace();}
+		}
+		
+		return list;
+		
 	}
+	
+	
+	
 	
 	
 }

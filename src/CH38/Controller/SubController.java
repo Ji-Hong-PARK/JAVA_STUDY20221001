@@ -1,6 +1,6 @@
 package CH38.Controller;
 
-import Ch38.Domain.DTO;
+import CH38.Domain.DTO;
 
 public interface SubController {
 
