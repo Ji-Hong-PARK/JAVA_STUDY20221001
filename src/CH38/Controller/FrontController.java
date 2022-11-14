@@ -16,7 +16,7 @@ public class FrontController {
 	}
 	//요청 서비스별 처리 Controller 를 저장 보관 하기위한 함수.
 	private void init() {
-		map.put("/Member", new MemberController());
+		map.put("/Member", new MemberController());	//서비스 요청별로 하위 컨트롤로 연결된다,.
 		map.put("/book", new BookController());
 		map.put("/auth", new AuthController());
 		map.put("/lend", new LendController());

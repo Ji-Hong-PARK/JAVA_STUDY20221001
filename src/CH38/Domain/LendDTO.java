@@ -1,12 +1,42 @@
 package CH38.Domain;
 
-public class LendDTO {
+public class LendDTO  extends DTO{
 	private int Lid;
+	private boolean login;
+	private int perm;
+	private String id;
 	private int bookcode;
 	private String memid;
 	private String starDate;
 	private String endDate;
 	
+	
+	
+	// 새로만든 get,setter 추가해준다.
+	public boolean isLogin() {
+		return login;
+	}
+
+	public void setLogin(boolean login) {
+		this.login = login;
+	}
+
+	public int getPerm() {
+		return perm;
+	}
+
+	public void setPerm(int perm) {
+		this.perm = perm;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	
 	//getter and setter 만들기.
 	public int getLid() {

@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import CH38.Controller.FrontController;
+import CH38.Domain.MemberDTO;
 import CH38.Service.AuthService;
 import CH38.Service.LendService;
 
@@ -106,28 +108,51 @@ public class UnitTest {
 		
 		
 		//확인작업
+//		boolean Loginstate = false;
+//		String userid = null;
+//		Integer perm = 0; // 0 비회원  1 회원 2 사서(관리자)
+//		//인증서비스
+//		AuthService authservice = AuthService.getInstancs();
+//		
+//		perm = authservice.LoginCheck("mem1", "1111");
+//		if(perm != null) {
+//			Loginstate = true;
+//			userid = "mem1";
+//		}else {
+//			perm = 0;
+//		}
+//		
+//		//대여서비스
+//		LendService lendservice = LendService.getInstancs();
+//		boolean result =  lendservice.Lendbook(Loginstate, perm, userid, 4040);
+//		if(result) {
+//			System.out.println("[View] 대여성공!");
+//		}else {
+//			System.out.println("[View] 대여실패..");
+//		}
+		
+		
+		
+		
+		//LendController Tests
+		
+		
 		boolean Loginstate = false;
 		String userid = null;
 		Integer perm = 0; // 0 비회원  1 회원 2 사서(관리자)
-		//인증서비스
-		AuthService authservice = AuthService.getInstancs();
 		
-		perm = authservice.LoginCheck("mem1", "1111");
-		if(perm != null) {
-			Loginstate = true;
+		FrontController controller = new FrontController();
+		perm = (Integer)controller.ExSubController("/auth", 1, new MemberDTO("mem1","1111"));
+		if(perm > 0) {
 			userid = "mem1";
-		}else {
-			perm = 0;
+			Loginstate = true;
 		}
+		//대여하기
+		controller.ExSubController("/lend", 1, new LendDTO());
 		
-		//대여서비스
-		LendService lendservice = LendService.getInstancs();
-		boolean result =  lendservice.Lendbook(Loginstate, perm, userid, 4040);
-		if(result) {
-			System.out.println("[View] 대여성공!");
-		}else {
-			System.out.println("[View] 대여실패..");
-		}
+		
+		
+		
 		
 		
 	}
